@@ -20,8 +20,12 @@ end
 # emit metrics on authentication events
 #
 if defined?(Warden)
-  Warden::Manager.after_authentication { |r| Regrapher.client.increment("auth.sign_in.#{r.class.table_name}") }
-  Warden::Manager.before_logout { |r| Regrapher.client.increment("auth.sign_out.#{r.class.table_name}") }
+  Warden::Manager.after_authentication do |r|
+    Regrapher.client.increment("auth.sign_in.#{r.class.table_name}")
+  end
+  Warden::Manager.before_logout do |r|
+    Regrapher.client.increment("auth.sign_out.#{r.class.table_name}")
+  end
 end
 
 #
