@@ -1,0 +1,8 @@
+Description:
+    Generates callback hooks for metrics logging in config/initializers/regrapher.rb.
+
+Example:
+    rails generate regrapher
+
+    This will create:
+        config/initializers/regrapher.rb
